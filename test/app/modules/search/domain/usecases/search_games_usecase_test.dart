@@ -20,7 +20,7 @@ void main() {
     when(mockSearchRepository.searchGames(any))
         .thenAnswer((_) async => Right(<Game>[tGame]));
 
-    final result = await usecase(tSearchTerm);
+    final result = await usecase(Params(searchTerm: tSearchTerm));
 
     expect(result, isA<Right<Failure, List<Game>>>());
     verify(mockSearchRepository.searchGames(tSearchTerm));
