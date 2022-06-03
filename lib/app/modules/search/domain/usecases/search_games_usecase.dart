@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:equatable/equatable.dart';
 import 'package:my_favorite_games/app/core/errors/failure.dart';
 import 'package:my_favorite_games/app/core/usecases/usecase.dart';
 import 'package:my_favorite_games/app/modules/search/domain/entities/game.dart';
@@ -15,8 +16,11 @@ class SearchGamesUsecase implements UseCase<List<Game>, Params> {
   }
 }
 
-class Params {
+class Params extends Equatable {
   final String searchTerm;
 
-  Params({required this.searchTerm});
+  const Params({required this.searchTerm});
+
+  @override
+  List<Object?> get props => [searchTerm];
 }
