@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
-import 'package:my_favorite_games/app/core/errors/failure.dart';
+import 'package:my_favorite_games/app/core/error/failure/failure.dart';
 import 'package:my_favorite_games/app/modules/search/data/repositories/search_repository_implementation.dart';
 import 'package:my_favorite_games/app/modules/search/domain/entities/game.dart';
 
