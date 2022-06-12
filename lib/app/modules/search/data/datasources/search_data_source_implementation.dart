@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:my_favorite_games/app/core/error/exception/server_exception.dart';
-import 'package:my_favorite_games/app/infrastructure/env.dart';
+import 'package:my_favorite_games/app/infrastructure/environment/env.dart';
 import 'package:my_favorite_games/app/modules/search/data/datasources/search_data_source.dart';
 import 'package:my_favorite_games/app/modules/search/data/models/game_model.dart';
 
