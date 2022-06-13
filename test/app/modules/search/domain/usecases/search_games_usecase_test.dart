@@ -3,7 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:my_favorite_games/app/core/error/failure/failure.dart';
-import 'package:my_favorite_games/app/modules/search/domain/entities/game.dart';
+import 'package:my_favorite_games/app/core/entities/game.dart';
 import 'package:my_favorite_games/app/modules/search/domain/repositories/search_repository.dart';
 import 'package:my_favorite_games/app/modules/search/domain/usecases/search_games_usecase.dart';
 

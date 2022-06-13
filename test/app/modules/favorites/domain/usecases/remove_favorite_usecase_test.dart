@@ -5,7 +5,7 @@ import 'package:mockito/mockito.dart';
 import 'package:my_favorite_games/app/core/error/failure/failure.dart';
 import 'package:my_favorite_games/app/modules/favorites/domain/repositories/favorites_repository.dart';
 import 'package:my_favorite_games/app/modules/favorites/domain/usecases/remove_favorite_usecase.dart';
-import 'package:my_favorite_games/app/modules/search/domain/entities/game.dart';
+import 'package:my_favorite_games/app/core/entities/game.dart';
 
 import 'add_favorite_usecase_test.mocks.dart';
 

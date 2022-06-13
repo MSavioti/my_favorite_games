@@ -4,7 +4,7 @@ import 'package:http_mock_adapter/http_mock_adapter.dart';
 import 'package:my_favorite_games/app/core/error/exception/server_exception.dart';
 import 'package:my_favorite_games/app/infrastructure/environment/env.dart';
 import 'package:my_favorite_games/app/modules/search/data/datasources/search_data_source_implementation.dart';
-import 'package:my_favorite_games/app/modules/search/data/models/game_model.dart';
+import 'package:my_favorite_games/app/core/models/game_model.dart';
 
 import '../../../../../fixtures/fixture_reader.dart';
 

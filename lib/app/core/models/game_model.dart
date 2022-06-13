@@ -1,4 +1,4 @@
-import 'package:my_favorite_games/app/modules/search/domain/entities/game.dart';
+import 'package:my_favorite_games/app/core/entities/game.dart';
 
 class GameModel extends Game {
   const GameModel({

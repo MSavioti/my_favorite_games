@@ -9,9 +9,9 @@ import 'package:my_favorite_games/app/core/error/failure/no_internet_failure.dar
 import 'package:my_favorite_games/app/core/messages/messages.dart';
 import 'package:my_favorite_games/app/core/network/network_info_implementation.dart';
 import 'package:my_favorite_games/app/modules/search/data/datasources/search_data_source_implementation.dart';
-import 'package:my_favorite_games/app/modules/search/data/models/game_model.dart';
+import 'package:my_favorite_games/app/core/models/game_model.dart';
 import 'package:my_favorite_games/app/modules/search/data/repositories/search_repository_implementation.dart';
-import 'package:my_favorite_games/app/modules/search/domain/entities/game.dart';
+import 'package:my_favorite_games/app/core/entities/game.dart';
 
 import '../../../../../fixtures/fixture_reader.dart';
 import 'search_repository_implementation_test.mocks.dart';
