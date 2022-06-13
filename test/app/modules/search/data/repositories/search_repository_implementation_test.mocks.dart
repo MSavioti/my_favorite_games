@@ -8,9 +8,10 @@ import 'package:dio/dio.dart' as _i3;
 import 'package:internet_connection_checker/internet_connection_checker.dart'
     as _i2;
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:my_favorite_games/app/core/models/game_model.dart' as _i7;
 import 'package:my_favorite_games/app/core/network/network_info_implementation.dart'
     as _i4;
+import 'package:my_favorite_games/app/core/shared/models/game_model.dart'
+    as _i7;
 import 'package:my_favorite_games/app/modules/search/data/datasources/search_data_source_implementation.dart'
     as _i6;
 

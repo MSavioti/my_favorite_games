@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:my_favorite_games/app/core/entities/game.dart';
+import 'package:my_favorite_games/app/core/shared/entities/game.dart';
 
 class SearchScreen extends ConsumerWidget {
   SearchScreen({Key? key}) : super(key: key);

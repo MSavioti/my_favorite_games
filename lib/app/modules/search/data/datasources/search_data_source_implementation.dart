@@ -4,7 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:my_favorite_games/app/core/error/exception/server_exception.dart';
 import 'package:my_favorite_games/app/infrastructure/environment/env.dart';
 import 'package:my_favorite_games/app/modules/search/data/datasources/search_data_source.dart';
-import 'package:my_favorite_games/app/core/models/game_model.dart';
+import 'package:my_favorite_games/app/core/shared/models/game_model.dart';
 
 class SearchDataSourceImplementation implements SearchDataSource {
   final Dio client;

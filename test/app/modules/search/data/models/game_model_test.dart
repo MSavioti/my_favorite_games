@@ -1,8 +1,8 @@
 import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:my_favorite_games/app/core/models/game_model.dart';
-import 'package:my_favorite_games/app/core/entities/game.dart';
+import 'package:my_favorite_games/app/core/shared/models/game_model.dart';
+import 'package:my_favorite_games/app/core/shared/entities/game.dart';
 
 import '../../../../../fixtures/fixture_reader.dart';
 
