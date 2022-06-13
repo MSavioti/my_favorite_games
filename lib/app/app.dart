@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:my_favorite_games/app/modules/search/presentation/screens/search_screen.dart';
 
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return MaterialApp(home: SearchScreen());
   }
 }
