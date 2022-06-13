@@ -12,7 +12,7 @@ class SearchScreen extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(),
       body: Column(
-        children: [
+        children: const [
           TextField(),
         ],
       ),
