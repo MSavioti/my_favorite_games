@@ -3,6 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:my_favorite_games/app/core/error/failure/local_storage_failure.dart';
+import 'package:my_favorite_games/app/core/messages/messages.dart';
 import 'package:my_favorite_games/app/modules/favorites/domain/repositories/favorites_repository.dart';
 import 'package:my_favorite_games/app/modules/favorites/domain/usecases/remove_favorite_usecase.dart';
 import 'package:my_favorite_games/app/core/shared/entities/game.dart';
@@ -33,7 +34,18 @@ void main() {
     test(
       'should return a LocalStorageFailure if attempt to remove a favorite is not successful',
       () async {
-        throw UnimplementedError();
+        when(mockFavoritesRepository.removeFavorite(any)).thenAnswer(
+          (_) async => const Left<LocalStorageFailure, Game>(
+              LocalStorageFailure(localStorageErrorMessage)),
+        );
+
+        final result = await useCase(tGame);
+        expect(
+          result,
+          const Left<LocalStorageFailure, Game>(
+              LocalStorageFailure(localStorageErrorMessage)),
+        );
+        verify(mockFavoritesRepository.removeFavorite(tGame.id));
       },
     );
   });
