@@ -3,6 +3,7 @@ import 'package:get_it/get_it.dart';
 import 'package:hive/hive.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:my_favorite_games/app/infrastructure/environment/env.dart';
+import 'package:my_favorite_games/app/shared/models/hive/hive_game_model.dart';
 import 'package:path_provider/path_provider.dart';
 
 final serviceLocator = GetIt.instance;
@@ -27,6 +28,7 @@ Future<void> _initExternalDependencies() async {
   // Hive
   final documentsPath = await getApplicationDocumentsDirectory();
   Hive.init(documentsPath.path);
+  Hive.registerAdapter(HiveGameModelAdapter());
   serviceLocator.registerLazySingletonAsync<Box>(
     () => Hive.openBox('favorites'),
     instanceName: 'favoritesBox',
