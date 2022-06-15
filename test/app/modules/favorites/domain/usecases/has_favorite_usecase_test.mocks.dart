@@ -6,7 +6,8 @@ import 'dart:async' as _i4;
 
 import 'package:dartz/dartz.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:my_favorite_games/app/core/error/failure/failure.dart' as _i5;
+import 'package:my_favorite_games/app/core/error/failure/local_storage_failure.dart'
+    as _i5;
 import 'package:my_favorite_games/app/core/shared/entities/game.dart' as _i6;
 import 'package:my_favorite_games/app/modules/favorites/domain/repositories/favorites_repository.dart'
     as _i3;
@@ -33,21 +34,34 @@ class MockFavoritesRepository extends _i1.Mock
   }
 
   @override
-  _i4.Future<_i2.Either<_i5.Failure, bool>> addFavorite(_i6.Game? game) =>
+  _i4.Future<_i2.Either<_i5.LocalStorageFailure, _i6.Game>> addFavorite(
+          _i6.Game? game) =>
       (super.noSuchMethod(Invocation.method(#addFavorite, [game]),
-              returnValue: Future<_i2.Either<_i5.Failure, bool>>.value(
-                  _FakeEither_0<_i5.Failure, bool>()))
-          as _i4.Future<_i2.Either<_i5.Failure, bool>>);
+              returnValue:
+                  Future<_i2.Either<_i5.LocalStorageFailure, _i6.Game>>.value(
+                      _FakeEither_0<_i5.LocalStorageFailure, _i6.Game>()))
+          as _i4.Future<_i2.Either<_i5.LocalStorageFailure, _i6.Game>>);
   @override
-  _i4.Future<_i2.Either<_i5.Failure, bool>> hasFavorite(_i6.Game? game) =>
-      (super.noSuchMethod(Invocation.method(#hasFavorite, [game]),
-              returnValue: Future<_i2.Either<_i5.Failure, bool>>.value(
-                  _FakeEither_0<_i5.Failure, bool>()))
-          as _i4.Future<_i2.Either<_i5.Failure, bool>>);
+  _i4.Future<_i2.Either<_i5.LocalStorageFailure, bool>> hasFavorite(
+          String? gameid) =>
+      (super.noSuchMethod(Invocation.method(#hasFavorite, [gameid]),
+          returnValue: Future<_i2.Either<_i5.LocalStorageFailure, bool>>.value(
+              _FakeEither_0<_i5.LocalStorageFailure, bool>())) as _i4
+          .Future<_i2.Either<_i5.LocalStorageFailure, bool>>);
   @override
-  _i4.Future<_i2.Either<_i5.Failure, bool>> removeFavorite(_i6.Game? game) =>
-      (super.noSuchMethod(Invocation.method(#removeFavorite, [game]),
-              returnValue: Future<_i2.Either<_i5.Failure, bool>>.value(
-                  _FakeEither_0<_i5.Failure, bool>()))
-          as _i4.Future<_i2.Either<_i5.Failure, bool>>);
+  _i4.Future<_i2.Either<_i5.LocalStorageFailure, _i6.Game>> removeFavorite(
+          String? gameid) =>
+      (super.noSuchMethod(Invocation.method(#removeFavorite, [gameid]),
+              returnValue:
+                  Future<_i2.Either<_i5.LocalStorageFailure, _i6.Game>>.value(
+                      _FakeEither_0<_i5.LocalStorageFailure, _i6.Game>()))
+          as _i4.Future<_i2.Either<_i5.LocalStorageFailure, _i6.Game>>);
+  @override
+  _i4.Future<_i2.Either<_i5.LocalStorageFailure, List<_i6.Game>>>
+      getFavorites() => (super.noSuchMethod(
+          Invocation.method(#getFavorites, []),
+          returnValue: Future<
+                  _i2.Either<_i5.LocalStorageFailure, List<_i6.Game>>>.value(
+              _FakeEither_0<_i5.LocalStorageFailure, List<_i6.Game>>())) as _i4
+          .Future<_i2.Either<_i5.LocalStorageFailure, List<_i6.Game>>>);
 }

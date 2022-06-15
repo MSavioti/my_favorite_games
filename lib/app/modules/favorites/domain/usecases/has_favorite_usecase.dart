@@ -1,5 +1,5 @@
-import 'package:my_favorite_games/app/core/error/failure/failure.dart';
 import 'package:dartz/dartz.dart';
+import 'package:my_favorite_games/app/core/error/failure/local_storage_failure.dart';
 import 'package:my_favorite_games/app/core/shared/usecases/usecase.dart';
 import 'package:my_favorite_games/app/modules/favorites/domain/repositories/favorites_repository.dart';
 import 'package:my_favorite_games/app/core/shared/entities/game.dart';
@@ -12,7 +12,7 @@ class HasFavoriteUseCase implements UseCase<bool, Game> {
   });
 
   @override
-  Future<Either<Failure, bool>> call(Game game) async {
-    return await favoritesRepository.hasFavorite(game);
+  Future<Either<LocalStorageFailure, bool>> call(Game game) async {
+    return await favoritesRepository.hasFavorite(game.id);
   }
 }

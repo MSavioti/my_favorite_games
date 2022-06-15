@@ -2,7 +2,8 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:my_favorite_games/app/core/error/failure/failure.dart';
+import 'package:my_favorite_games/app/core/error/failure/local_storage_failure.dart';
+import 'package:my_favorite_games/app/core/messages/messages.dart';
 import 'package:my_favorite_games/app/modules/favorites/domain/repositories/favorites_repository.dart';
 import 'package:my_favorite_games/app/modules/favorites/domain/usecases/has_favorite_usecase.dart';
 import 'package:my_favorite_games/app/core/shared/entities/game.dart';
@@ -19,26 +20,32 @@ void main() {
 
   group('check if game is favorite', () {
     test(
-      'should return true if game is added as favorite',
+      'should return true when the game checked is added as favorite',
       () async {
-        when(mockFavoritesRepository.hasFavorite(any))
-            .thenAnswer((_) async => const Right<Failure, bool>(true));
+        when(mockFavoritesRepository.hasFavorite(any)).thenAnswer(
+            (_) async => const Right<LocalStorageFailure, bool>(true));
 
         final result = await useCase(tGame);
-        expect(result, const Right<Failure, bool>(true));
-        verify(mockFavoritesRepository.hasFavorite(tGame));
+        expect(result, const Right<LocalStorageFailure, bool>(true));
+        verify(mockFavoritesRepository.hasFavorite(tGame.id));
       },
     );
 
     test(
-      'should return false if game is not added as favorite',
+      'should return false when the game checked is not added as favorite',
       () async {
-        when(mockFavoritesRepository.hasFavorite(any))
-            .thenAnswer((_) async => const Right<Failure, bool>(false));
+        when(mockFavoritesRepository.hasFavorite(any)).thenAnswer(
+          (_) async => const Left<LocalStorageFailure, bool>(
+              LocalStorageFailure(localStorageErrorMessage)),
+        );
 
         final result = await useCase(tGame);
-        expect(result, const Right<Failure, bool>(false));
-        verify(mockFavoritesRepository.hasFavorite(tGame));
+        expect(
+          result,
+          const Left<LocalStorageFailure, bool>(
+              LocalStorageFailure(localStorageErrorMessage)),
+        );
+        verify(mockFavoritesRepository.hasFavorite(tGame.id));
       },
     );
   });

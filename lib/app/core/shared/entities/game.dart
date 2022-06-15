@@ -1,6 +1,4 @@
-import 'package:equatable/equatable.dart';
-
-class Game extends Equatable {
+class Game {
   final String id;
   final String steamAppID;
   final String cheapestPrice;
@@ -26,5 +24,8 @@ class Game extends Equatable {
   }
 
   @override
-  List<Object?> get props => [id];
+  bool operator ==(Object other) => other is Game && other.id == id;
+
+  @override
+  int get hashCode => id.hashCode;
 }

@@ -1,10 +1,11 @@
-import 'package:equatable/equatable.dart';
-
-abstract class Failure extends Equatable {
+abstract class Failure {
   final Object error;
 
   const Failure(this.error);
 
   @override
-  List<Object?> get props => [error];
+  bool operator ==(Object other) => other is Failure && other.error == error;
+
+  @override
+  int get hashCode => error.hashCode;
 }
