@@ -1,4 +1,4 @@
-import 'package:my_favorite_games/app/core/shared/entities/game.dart';
+import 'package:my_favorite_games/app/shared/entities/game.dart';
 
 class GameModel extends Game {
   const GameModel({

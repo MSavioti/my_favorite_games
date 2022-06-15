@@ -5,7 +5,7 @@ import 'package:my_favorite_games/app/core/messages/messages.dart';
 import 'package:my_favorite_games/app/modules/favorites/data/datasources/local_data_source.dart';
 
 import 'package:my_favorite_games/app/modules/favorites/domain/repositories/favorites_repository.dart';
-import 'package:my_favorite_games/app/core/shared/entities/game.dart';
+import 'package:my_favorite_games/app/shared/entities/game.dart';
 
 class FavoritesRepositoryImplementation implements FavoritesRepository {
   final LocalDataSource localDataSource;

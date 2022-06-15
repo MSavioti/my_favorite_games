@@ -2,14 +2,14 @@
 // in my_favorite_games/test/app/modules/favorites/data/repositories/favorites_repository_implementation_test.dart.
 // Do not manually edit this file.
 
-import 'dart:async' as _i4;
+import 'dart:async' as _i5;
 
+import 'package:hive/hive.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:my_favorite_games/app/core/shared/entities/game.dart' as _i5;
-import 'package:my_favorite_games/app/core/shared/models/game_model.dart'
-    as _i2;
 import 'package:my_favorite_games/app/modules/favorites/data/datasources/local_data_source_implementation.dart'
-    as _i3;
+    as _i4;
+import 'package:my_favorite_games/app/shared/entities/game.dart' as _i6;
+import 'package:my_favorite_games/app/shared/models/game_model.dart' as _i3;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -21,34 +21,40 @@ import 'package:my_favorite_games/app/modules/favorites/data/datasources/local_d
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: camel_case_types
 
-class _FakeGameModel_0 extends _i1.Fake implements _i2.GameModel {}
+class _FakeBox_0<E> extends _i1.Fake implements _i2.Box<E> {}
+
+class _FakeGameModel_1 extends _i1.Fake implements _i3.GameModel {}
 
 /// A class which mocks [LocalDataSourceImplementation].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockLocalDataSourceImplementation extends _i1.Mock
-    implements _i3.LocalDataSourceImplementation {
+    implements _i4.LocalDataSourceImplementation {
   MockLocalDataSourceImplementation() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i4.Future<_i2.GameModel> addFavorite(_i5.Game? game) =>
+  _i2.Box<dynamic> get favoritesBox =>
+      (super.noSuchMethod(Invocation.getter(#favoritesBox),
+          returnValue: _FakeBox_0<dynamic>()) as _i2.Box<dynamic>);
+  @override
+  _i5.Future<_i3.GameModel> addFavorite(_i6.Game? game) =>
       (super.noSuchMethod(Invocation.method(#addFavorite, [game]),
-              returnValue: Future<_i2.GameModel>.value(_FakeGameModel_0()))
-          as _i4.Future<_i2.GameModel>);
+              returnValue: Future<_i3.GameModel>.value(_FakeGameModel_1()))
+          as _i5.Future<_i3.GameModel>);
   @override
-  _i4.Future<bool> hasFavorite(String? gameId) =>
+  _i5.Future<bool> hasFavorite(String? gameId) =>
       (super.noSuchMethod(Invocation.method(#hasFavorite, [gameId]),
-          returnValue: Future<bool>.value(false)) as _i4.Future<bool>);
+          returnValue: Future<bool>.value(false)) as _i5.Future<bool>);
   @override
-  _i4.Future<_i2.GameModel> removeFavorite(String? gameId) =>
+  _i5.Future<_i3.GameModel> removeFavorite(String? gameId) =>
       (super.noSuchMethod(Invocation.method(#removeFavorite, [gameId]),
-              returnValue: Future<_i2.GameModel>.value(_FakeGameModel_0()))
-          as _i4.Future<_i2.GameModel>);
+              returnValue: Future<_i3.GameModel>.value(_FakeGameModel_1()))
+          as _i5.Future<_i3.GameModel>);
   @override
-  _i4.Future<List<_i2.GameModel>> getFavorites() =>
+  _i5.Future<List<_i3.GameModel>> getFavorites() =>
       (super.noSuchMethod(Invocation.method(#getFavorites, []),
-              returnValue: Future<List<_i2.GameModel>>.value(<_i2.GameModel>[]))
-          as _i4.Future<List<_i2.GameModel>>);
+              returnValue: Future<List<_i3.GameModel>>.value(<_i3.GameModel>[]))
+          as _i5.Future<List<_i3.GameModel>>);
 }

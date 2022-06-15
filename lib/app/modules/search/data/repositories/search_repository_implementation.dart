@@ -5,7 +5,7 @@ import 'package:my_favorite_games/app/core/error/failure/no_internet_failure.dar
 import 'package:my_favorite_games/app/core/messages/messages.dart';
 import 'package:my_favorite_games/app/core/network/network_info.dart';
 import 'package:my_favorite_games/app/modules/search/data/datasources/search_data_source.dart';
-import 'package:my_favorite_games/app/core/shared/entities/game.dart';
+import 'package:my_favorite_games/app/shared/entities/game.dart';
 import 'package:my_favorite_games/app/core/error/failure/failure.dart';
 import 'package:my_favorite_games/app/modules/search/domain/repositories/search_repository.dart';
 

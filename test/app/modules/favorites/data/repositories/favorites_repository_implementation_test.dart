@@ -6,8 +6,8 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:my_favorite_games/app/core/error/exception/local_storage_exception.dart';
 import 'package:my_favorite_games/app/core/error/failure/local_storage_failure.dart';
-import 'package:my_favorite_games/app/core/shared/entities/game.dart';
-import 'package:my_favorite_games/app/core/shared/models/game_model.dart';
+import 'package:my_favorite_games/app/shared/entities/game.dart';
+import 'package:my_favorite_games/app/shared/models/game_model.dart';
 import 'package:my_favorite_games/app/modules/favorites/data/datasources/local_data_source_implementation.dart';
 import 'package:my_favorite_games/app/modules/favorites/data/repositories/favorites_repository_implementation.dart';
 

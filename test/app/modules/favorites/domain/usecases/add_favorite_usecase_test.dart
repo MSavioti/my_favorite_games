@@ -6,7 +6,7 @@ import 'package:my_favorite_games/app/core/error/failure/local_storage_failure.d
 import 'package:my_favorite_games/app/core/messages/messages.dart';
 import 'package:my_favorite_games/app/modules/favorites/domain/repositories/favorites_repository.dart';
 import 'package:my_favorite_games/app/modules/favorites/domain/usecases/add_favorite_usecase.dart';
-import 'package:my_favorite_games/app/core/shared/entities/game.dart';
+import 'package:my_favorite_games/app/shared/entities/game.dart';
 
 import 'add_favorite_usecase_test.mocks.dart';
 
