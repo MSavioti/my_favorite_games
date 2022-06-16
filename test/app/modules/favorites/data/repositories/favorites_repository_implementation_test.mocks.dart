@@ -21,7 +21,7 @@ import 'package:my_favorite_games/app/shared/models/game_model.dart' as _i3;
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: camel_case_types
 
-class _FakeBox_0<E> extends _i1.Fake implements _i2.Box<E> {}
+class _FakeHiveInterface_0 extends _i1.Fake implements _i2.HiveInterface {}
 
 class _FakeGameModel_1 extends _i1.Fake implements _i3.GameModel {}
 
@@ -35,9 +35,17 @@ class MockLocalDataSourceImplementation extends _i1.Mock
   }
 
   @override
-  _i2.Box<dynamic> get favoritesBox =>
-      (super.noSuchMethod(Invocation.getter(#favoritesBox),
-          returnValue: _FakeBox_0<dynamic>()) as _i2.Box<dynamic>);
+  _i2.HiveInterface get hiveInterface =>
+      (super.noSuchMethod(Invocation.getter(#hiveInterface),
+          returnValue: _FakeHiveInterface_0()) as _i2.HiveInterface);
+  @override
+  bool get isInitialized =>
+      (super.noSuchMethod(Invocation.getter(#isInitialized), returnValue: false)
+          as bool);
+  @override
+  set isInitialized(bool? _isInitialized) =>
+      super.noSuchMethod(Invocation.setter(#isInitialized, _isInitialized),
+          returnValueForMissingStub: null);
   @override
   _i5.Future<_i3.GameModel> addFavorite(_i6.Game? game) =>
       (super.noSuchMethod(Invocation.method(#addFavorite, [game]),

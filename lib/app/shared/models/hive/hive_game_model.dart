@@ -1,4 +1,5 @@
 import 'package:hive/hive.dart';
+import 'package:my_favorite_games/app/shared/entities/game.dart';
 import 'package:my_favorite_games/app/shared/models/game_model.dart';
 
 part 'hive_game_model.g.dart';
@@ -42,5 +43,15 @@ class HiveGameModel implements GameModel {
       'external': externalName,
       'thumb': thumbnail,
     };
+  }
+
+  factory HiveGameModel.fromGame(Game game) {
+    return HiveGameModel(
+      id: game.id,
+      steamAppID: game.steamAppID,
+      cheapestPrice: game.cheapestPrice,
+      externalName: game.externalName,
+      thumbnail: game.thumbnail,
+    );
   }
 }
