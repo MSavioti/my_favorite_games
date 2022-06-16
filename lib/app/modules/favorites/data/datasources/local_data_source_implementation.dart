@@ -55,9 +55,13 @@ class LocalDataSourceImplementation implements LocalDataSource {
   }
 
   @override
-  Future<List<GameModel>> getFavorites() {
-    // TODO: implement getFavorites
-    throw UnimplementedError();
+  Future<List<GameModel>> getFavorites() async {
+    try {
+      final favorites = await _retrieveFavorites();
+      return favorites.toList();
+    } on HiveError {
+      throw LocalStorageException();
+    }
   }
 
   Future<HiveGameModel?> _retrieveFavorite(String gameId) async {
@@ -65,6 +69,13 @@ class LocalDataSourceImplementation implements LocalDataSource {
         await hiveInterface.openBox<HiveGameModel>('favorites');
     final favorite = favoritesBox.get(gameId);
     return favorite;
+  }
+
+  Future<Iterable<HiveGameModel>> _retrieveFavorites() async {
+    final favoritesBox =
+        await hiveInterface.openBox<HiveGameModel>('favorites');
+    final favorites = favoritesBox.values;
+    return favorites;
   }
 
   Future<void> _saveFavorite(HiveGameModel favorite) async {

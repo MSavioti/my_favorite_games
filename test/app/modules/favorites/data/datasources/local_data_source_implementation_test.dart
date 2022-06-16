@@ -154,4 +154,55 @@ void main() {
       );
     },
   );
+
+  group(
+    'get all favorites',
+    () {
+      test(
+        'should return a List of GameModel with favorites data when the call to retrieve saved favorite games is successful',
+        () async {
+          final mockedValues = List.generate(3, (index) => tGame);
+          final mockedHiveValues = List.generate(3, (index) => tHiveGameModel);
+
+          when(mockHiveInterface.openBox('favorites'))
+              .thenAnswer((_) async => mockBox);
+          when(mockBox.values).thenReturn(mockedHiveValues);
+
+          final result = await localDataSource.getFavorites();
+
+          expect(result, containsAll(mockedValues));
+          verify(mockHiveInterface.openBox('favorites'));
+          verify(mockBox.values);
+        },
+      );
+
+      test(
+        'should return an empty List of GameModel when there\'s no favorite games saved',
+        () async {
+          when(mockHiveInterface.openBox('favorites'))
+              .thenAnswer((_) async => mockBox);
+          when(mockBox.values).thenReturn([]);
+
+          final result = await localDataSource.getFavorites();
+
+          expect(result.isEmpty, true);
+          verify(mockHiveInterface.openBox('favorites'));
+          verify(mockBox.values);
+        },
+      );
+
+      test(
+        'should throw a LocalStorageException when the call to retrieve saved favorite games is not successful',
+        () async {
+          when(mockHiveInterface.openBox('favorites'))
+              .thenThrow(HiveError('Forced error for testing'));
+
+          final functionCall = localDataSource.getFavorites();
+
+          await expectLater(
+              functionCall, throwsA(isA<LocalStorageException>()));
+        },
+      );
+    },
+  );
 }
