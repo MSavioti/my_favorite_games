@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_favorite_games/app/modules/home/presentation/screens/home_screen.dart';
 import 'package:my_favorite_games/app/modules/search/presentation/screens/search_screen.dart';
 
 class App extends StatelessWidget {
@@ -6,6 +7,9 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: SearchScreen());
+    return MaterialApp(
+      home: HomeScreen(),
+      debugShowCheckedModeBanner: false,
+    );
   }
 }
