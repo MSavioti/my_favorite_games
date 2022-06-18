@@ -38,10 +38,6 @@ Future<void> _initExternalDependencies() async {
   final documentsPath = await getApplicationDocumentsDirectory();
   Hive.init(documentsPath.path);
   Hive.registerAdapter(HiveGameModelAdapter());
-  serviceLocator.registerLazySingletonAsync<Box>(
-    () => Hive.openBox('favorites'),
-    instanceName: 'favoritesBox',
-  );
 
   // Internet Connection Checker
   serviceLocator.registerLazySingleton<InternetConnectionChecker>(
