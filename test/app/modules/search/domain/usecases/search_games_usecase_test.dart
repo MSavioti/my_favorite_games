@@ -13,7 +13,7 @@ import 'search_games_usecase_test.mocks.dart';
 void main() {
   final MockSearchRepository mockSearchRepository = MockSearchRepository();
   final tGame = Game.dummy();
-  final usecase = SearchGamesUsecase(mockSearchRepository);
+  final usecase = SearchGamesUsecase(searchRepository: mockSearchRepository);
   const tSearchTerm = 'Game Name';
 
   test('should return a list of games List<Game>', () async {
