@@ -3,7 +3,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:my_favorite_games/app/shared/entities/game.dart';
 
 class SearchScreen extends ConsumerWidget {
-  SearchScreen({Key? key}) : super(key: key);
+  final String searchTerm;
+
+  SearchScreen({
+    Key? key,
+    required this.searchTerm,
+  }) : super(key: key);
 
   final searchResultsProvider = StateProvider<List<Game>?>((ref) => null);
 

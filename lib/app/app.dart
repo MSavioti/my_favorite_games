@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:my_favorite_games/app/modules/game/presentation/screens/game_module.dart';
-import 'package:my_favorite_games/app/modules/home/presentation/screens/home_screen.dart';
-import 'package:my_favorite_games/app/modules/search/presentation/screens/search_module.dart';
+import 'package:my_favorite_games/app/modules/game/presentation/game_module.dart';
+import 'package:my_favorite_games/app/modules/home/presentation/home_screen.dart';
+import 'package:my_favorite_games/app/modules/search/presentation/search_module.dart';
 
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
@@ -12,7 +12,7 @@ class App extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {
-        '/': (context) => const HomeScreen(),
+        '/': (context) => HomeScreen(),
         '/game': (context) => const GameModule(),
         '/search': (context) => const SearchModule(),
       },
