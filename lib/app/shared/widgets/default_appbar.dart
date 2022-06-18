@@ -29,6 +29,7 @@ class DefaultAppBar extends StatelessWidget with PreferredSizeWidget {
         onPressed: arrowBackAction ?? () => Navigator.of(context).pop(),
       ),
       automaticallyImplyLeading: true,
+      actions: actions,
     );
   }
 }
