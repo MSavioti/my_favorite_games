@@ -19,8 +19,15 @@ class SearchScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    void _goToHomeScreen() {
+      Navigator.of(context).pushReplacementNamed('/');
+    }
+
     return Scaffold(
-      appBar: DefaultAppBar(title: 'Search results for "$searchTerm"'),
+      appBar: DefaultAppBar(
+        title: 'Search results for "$searchTerm"',
+        arrowBackAction: _goToHomeScreen,
+      ),
       body: ContentBlock(
         child: Column(
           children: [
