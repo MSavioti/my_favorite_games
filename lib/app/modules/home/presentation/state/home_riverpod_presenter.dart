@@ -6,7 +6,7 @@ import 'package:my_favorite_games/app/shared/entities/game.dart';
 import 'package:my_favorite_games/app/shared/helpers/no_params.dart';
 
 class HomeRiverpodPresenter implements HomePresenter {
-  final useCase = GetFavoritesUseCase(favoritesRepository: serviceLocator());
+  final useCase = serviceLocator.get<GetFavoritesUseCase>();
   late final FutureProvider<List<Game>> provider;
 
   HomeRiverpodPresenter() {

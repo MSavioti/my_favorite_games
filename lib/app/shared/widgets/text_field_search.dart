@@ -1,15 +1,37 @@
 import 'package:flutter/material.dart';
 
-class SearchTextField extends StatelessWidget {
-  const SearchTextField({Key? key}) : super(key: key);
+class SearchTextField extends StatefulWidget {
+  final String? initialValue;
+
+  const SearchTextField({
+    Key? key,
+    this.initialValue,
+  }) : super(key: key);
+
+  @override
+  State<SearchTextField> createState() => _SearchTextFieldState();
+}
+
+class _SearchTextFieldState extends State<SearchTextField> {
+  final controller = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    controller.text = widget.initialValue ?? '';
+  }
 
   @override
   Widget build(BuildContext context) {
     void _search(String searchTerm) {
-      Navigator.of(context).pushNamed('/search', arguments: searchTerm);
+      Navigator.of(context).pushReplacementNamed(
+        '/search',
+        arguments: searchTerm,
+      );
     }
 
     return TextField(
+      controller: controller,
       cursorColor: Colors.white70,
       decoration: InputDecoration(
         border: OutlineInputBorder(

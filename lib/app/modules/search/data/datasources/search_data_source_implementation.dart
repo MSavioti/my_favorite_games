@@ -23,12 +23,18 @@ class SearchDataSourceImplementation implements SearchDataSource {
         throw ServerException();
       }
 
-      if (response.data.isEmpty) {
+      if (response.data == null || response.data.isEmpty) {
         return [];
       }
 
-      final parsedData = json.decode(response.data);
-      final items = parsedData as List;
+      List<dynamic> items = [];
+
+      if (response.data is String) {
+        items = json.decode(response.data);
+      } else {
+        items = response.data;
+      }
+
       final games = items.map((e) => GameModel.fromMap(e));
       return games.toList();
     } on DioError {

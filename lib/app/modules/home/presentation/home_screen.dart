@@ -3,6 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:my_favorite_games/app/modules/home/presentation/state/home_riverpod_presenter.dart';
 import 'package:my_favorite_games/app/modules/home/presentation/widgets/grid_favorited_games.dart';
 import 'package:my_favorite_games/app/shared/widgets/alert_with_icon.dart';
+import 'package:my_favorite_games/app/shared/widgets/content_block.dart';
+import 'package:my_favorite_games/app/shared/widgets/default_appbar.dart';
 import 'package:my_favorite_games/app/shared/widgets/text_field_search.dart';
 
 class HomeScreen extends ConsumerWidget {
@@ -14,16 +16,8 @@ class HomeScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: AppBar(
-        title: const Text(
-          'My Favorite Games',
-          style: TextStyle(color: Colors.white70),
-        ),
-        backgroundColor: Colors.grey[800],
-      ),
-      body: Container(
-        color: Colors.orange[900],
-        padding: const EdgeInsets.all(16.0),
+      appBar: DefaultAppBar(title: 'My Favorite Games'),
+      body: ContentBlock(
         child: Column(
           children: [
             const SearchTextField(),

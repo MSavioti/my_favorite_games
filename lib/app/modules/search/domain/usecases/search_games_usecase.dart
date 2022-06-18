@@ -7,7 +7,7 @@ import 'package:my_favorite_games/app/modules/search/domain/repositories/search_
 class SearchGamesUsecase implements UseCase<List<Game>, String> {
   final SearchRepository searchRepository;
 
-  SearchGamesUsecase(this.searchRepository);
+  SearchGamesUsecase({required this.searchRepository});
 
   @override
   Future<Either<Failure, List<Game>>> call(String searchTerm) async {
