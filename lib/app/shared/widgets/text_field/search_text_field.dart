@@ -5,6 +5,10 @@ class SearchTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    void _search(String searchTerm) {
+      Navigator.of(context).pushNamed('/search', arguments: searchTerm);
+    }
+
     return TextField(
       cursorColor: Colors.white70,
       decoration: InputDecoration(
@@ -28,6 +32,7 @@ class SearchTextField extends StatelessWidget {
         ),
       ),
       style: const TextStyle(color: Colors.white70),
+      onSubmitted: _search,
     );
   }
 }
