@@ -23,7 +23,6 @@ class GameScreen extends ConsumerStatefulWidget {
 }
 
 class _GameScreenState extends ConsumerState<GameScreen> {
-  bool? isFavorite;
   bool hasThrownError = false;
   bool hasInitializedValue = false;
 
@@ -64,7 +63,12 @@ class _GameScreenState extends ConsumerState<GameScreen> {
                   data: (data) {
                     if (!hasInitializedValue) {
                       hasInitializedValue = true;
-                      isFavorite = data;
+                      WidgetsBinding.instance.addPostFrameCallback((_) {
+                        ref
+                            .read(widget
+                                .presenter.favoriteButtonProvider.notifier)
+                            .update((_) => data);
+                      });
                     }
                   },
                   error: (_, __) {
@@ -77,7 +81,7 @@ class _GameScreenState extends ConsumerState<GameScreen> {
                   return const Icon(Icons.error);
                 }
 
-                if (isFavorite == null) {
+                if (!hasInitializedValue) {
                   return const CircularProgressIndicator();
                 }
 
@@ -92,9 +96,9 @@ class _GameScreenState extends ConsumerState<GameScreen> {
                     ref
                         .read(widget.presenter.favoriteButtonProvider.notifier)
                         .update((state) => !state);
-                    isFavorite =
+                    final isFavorite =
                         ref.read(widget.presenter.favoriteButtonProvider);
-                    _showSnackbar(context, isFavorite!);
+                    _showSnackbar(context, isFavorite);
 
                     await widget.presenter.toggleFavoriteUseCase(widget.game);
                   },
