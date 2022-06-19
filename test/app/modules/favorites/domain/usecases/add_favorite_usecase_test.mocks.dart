@@ -43,15 +43,15 @@ class MockFavoritesRepository extends _i1.Mock
           as _i4.Future<_i2.Either<_i5.LocalStorageFailure, _i6.Game>>);
   @override
   _i4.Future<_i2.Either<_i5.LocalStorageFailure, bool>> hasFavorite(
-          String? gameid) =>
-      (super.noSuchMethod(Invocation.method(#hasFavorite, [gameid]),
+          String? gameId) =>
+      (super.noSuchMethod(Invocation.method(#hasFavorite, [gameId]),
           returnValue: Future<_i2.Either<_i5.LocalStorageFailure, bool>>.value(
               _FakeEither_0<_i5.LocalStorageFailure, bool>())) as _i4
           .Future<_i2.Either<_i5.LocalStorageFailure, bool>>);
   @override
   _i4.Future<_i2.Either<_i5.LocalStorageFailure, _i6.Game>> removeFavorite(
-          String? gameid) =>
-      (super.noSuchMethod(Invocation.method(#removeFavorite, [gameid]),
+          String? gameId) =>
+      (super.noSuchMethod(Invocation.method(#removeFavorite, [gameId]),
               returnValue:
                   Future<_i2.Either<_i5.LocalStorageFailure, _i6.Game>>.value(
                       _FakeEither_0<_i5.LocalStorageFailure, _i6.Game>()))

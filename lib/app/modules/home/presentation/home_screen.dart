@@ -4,6 +4,7 @@ import 'package:my_favorite_games/app/modules/home/presentation/state/home_river
 import 'package:my_favorite_games/app/modules/home/presentation/widgets/grid_favorited_games.dart';
 import 'package:my_favorite_games/app/shared/widgets/alert_with_icon.dart';
 import 'package:my_favorite_games/app/shared/widgets/content_block.dart';
+import 'package:my_favorite_games/app/shared/widgets/custom_progress_indicator.dart';
 import 'package:my_favorite_games/app/shared/widgets/default_appbar.dart';
 import 'package:my_favorite_games/app/shared/widgets/text_field_search.dart';
 
@@ -16,7 +17,10 @@ class HomeScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: DefaultAppBar(title: 'My Favorite Games'),
+      appBar: DefaultAppBar(
+        title: 'My Favorite Games',
+        hideArrowBack: true,
+      ),
       body: ContentBlock(
         child: Column(
           children: [
@@ -34,15 +38,13 @@ class HomeScreen extends ConsumerWidget {
                       );
                     }
 
-                    return Flexible(
-                      child: GridFavoriteGames(games: data),
-                    );
+                    return GridFavoriteGames(games: data);
                   },
                   error: (obj, error) {
                     return AlertWithIcon(message: obj.toString());
                   },
                   loading: () {
-                    return const CircularProgressIndicator();
+                    return const CustomProgressIndicator();
                   },
                 );
               },

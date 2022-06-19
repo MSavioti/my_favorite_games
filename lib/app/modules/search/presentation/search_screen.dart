@@ -4,6 +4,7 @@ import 'package:my_favorite_games/app/modules/search/presentation/state/search_r
 import 'package:my_favorite_games/app/modules/search/presentation/widgets/list_tile_search_result_item.dart';
 import 'package:my_favorite_games/app/shared/widgets/alert_with_icon.dart';
 import 'package:my_favorite_games/app/shared/widgets/content_block.dart';
+import 'package:my_favorite_games/app/shared/widgets/custom_progress_indicator.dart';
 import 'package:my_favorite_games/app/shared/widgets/default_appbar.dart';
 import 'package:my_favorite_games/app/shared/widgets/text_field_search.dart';
 
@@ -60,7 +61,7 @@ class SearchScreen extends ConsumerWidget {
                   error: (obj, error) =>
                       AlertWithIcon(message: 'Error: "$obj".'),
                   loading: () {
-                    return const CircularProgressIndicator();
+                    return const CustomProgressIndicator();
                   },
                 );
               },

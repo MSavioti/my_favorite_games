@@ -14,6 +14,7 @@ import 'package:my_favorite_games/app/modules/favorites/domain/usecases/add_favo
 import 'package:my_favorite_games/app/modules/favorites/domain/usecases/get_favorites_usecase.dart';
 import 'package:my_favorite_games/app/modules/favorites/domain/usecases/has_favorite_usecase.dart';
 import 'package:my_favorite_games/app/modules/favorites/domain/usecases/remove_favorite_usecase.dart';
+import 'package:my_favorite_games/app/modules/favorites/domain/usecases/toggle_favorite_usecase.dart';
 import 'package:my_favorite_games/app/modules/search/data/datasources/search_data_source.dart';
 import 'package:my_favorite_games/app/modules/search/data/datasources/search_data_source_implementation.dart';
 import 'package:my_favorite_games/app/modules/search/data/repositories/search_repository_implementation.dart';
@@ -91,4 +92,6 @@ void _initFeatures() {
       () => HasFavoriteUseCase(favoritesRepository: serviceLocator()));
   serviceLocator.registerLazySingleton<RemoveFavoriteUseCase>(
       () => RemoveFavoriteUseCase(favoritesRepository: serviceLocator()));
+  serviceLocator.registerLazySingleton<ToggleFavoriteUseCase>(
+      () => ToggleFavoriteUseCase(favoritesRepository: serviceLocator()));
 }

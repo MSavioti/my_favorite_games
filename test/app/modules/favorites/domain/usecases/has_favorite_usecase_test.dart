@@ -25,7 +25,7 @@ void main() {
         when(mockFavoritesRepository.hasFavorite(any)).thenAnswer(
             (_) async => const Right<LocalStorageFailure, bool>(true));
 
-        final result = await useCase(tGame);
+        final result = await useCase(tGame.id);
         expect(result, const Right<LocalStorageFailure, bool>(true));
         verify(mockFavoritesRepository.hasFavorite(tGame.id));
       },
@@ -39,7 +39,7 @@ void main() {
               LocalStorageFailure(localStorageErrorMessage)),
         );
 
-        final result = await useCase(tGame);
+        final result = await useCase(tGame.id);
         expect(
           result,
           const Left<LocalStorageFailure, bool>(
