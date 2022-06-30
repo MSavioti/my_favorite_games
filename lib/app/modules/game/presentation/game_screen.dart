@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:my_favorite_games/app/modules/game/presentation/state/game_riverpod_presenter.dart';
+import 'package:my_favorite_games/app/modules/game/presentation/widgets/favorite_button.dart';
 import 'package:my_favorite_games/app/modules/game/presentation/widgets/steam_button.dart';
 import 'package:my_favorite_games/app/shared/entities/game.dart';
 import 'package:my_favorite_games/app/shared/widgets/content_block.dart';
@@ -56,12 +57,14 @@ class _GameScreenState extends ConsumerState<GameScreen> {
                   data: (data) {
                     if (!hasInitializedValue) {
                       hasInitializedValue = true;
-                      WidgetsBinding.instance.addPostFrameCallback((_) {
-                        ref
-                            .read(widget
-                                .presenter.favoriteButtonProvider.notifier)
-                            .update((_) => data);
-                      });
+                      WidgetsBinding.instance.addPostFrameCallback(
+                        (_) {
+                          ref
+                              .read(widget
+                                  .presenter.favoriteButtonProvider.notifier)
+                              .update((_) => data);
+                        },
+                      );
                     }
                   },
                   error: (_, __) {
@@ -78,13 +81,8 @@ class _GameScreenState extends ConsumerState<GameScreen> {
                   return const CircularProgressIndicator();
                 }
 
-                return IconButton(
-                  icon: Icon(
-                    favoriteButtonProvider
-                        ? Icons.star
-                        : Icons.star_border_outlined,
-                    color: Colors.white70,
-                  ),
+                return FavoriteButton(
+                  isFavorite: favoriteButtonProvider,
                   onPressed: () async {
                     ref
                         .read(widget.presenter.favoriteButtonProvider.notifier)
