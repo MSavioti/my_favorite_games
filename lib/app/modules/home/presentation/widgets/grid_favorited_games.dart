@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_favorite_games/app/modules/home/presentation/widgets/game_grid_item.dart';
 import 'package:my_favorite_games/app/shared/entities/game.dart';
 
 class GridFavoriteGames extends StatelessWidget {
@@ -20,30 +21,8 @@ class GridFavoriteGames extends StatelessWidget {
         shrinkWrap: true,
         children: [
           for (int i = 0; i < games.length; i++)
-            InkWell(
-              child: Container(
-                color: Colors.grey[900],
-                padding: const EdgeInsets.all(8.0),
-                child: Stack(
-                  children: [
-                    Positioned.fill(
-                      child: Image.network(games[i].thumbnail),
-                    ),
-                    Positioned(
-                      bottom: 4.0,
-                      child: SizedBox(
-                        child: Text(
-                          games[i].externalName,
-                          style: const TextStyle(
-                            color: Colors.white70,
-                            fontSize: 12.0,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+            GameGridItem(
+              game: games[i],
               onTap: () => Navigator.of(context).pushNamed(
                 '/game',
                 arguments: games[i],
