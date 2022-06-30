@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:my_favorite_games/app/infrastructure/environment/env.dart';
 import 'package:my_favorite_games/app/modules/game/presentation/state/game_riverpod_presenter.dart';
+import 'package:my_favorite_games/app/modules/game/presentation/widgets/steam_button.dart';
 import 'package:my_favorite_games/app/shared/entities/game.dart';
 import 'package:my_favorite_games/app/shared/widgets/content_block.dart';
 import 'package:my_favorite_games/app/shared/widgets/default_appbar.dart';
-
-import 'package:url_launcher/url_launcher.dart' as launcher;
 
 class GameScreen extends ConsumerStatefulWidget {
   final Game game;
@@ -25,11 +23,6 @@ class GameScreen extends ConsumerStatefulWidget {
 class _GameScreenState extends ConsumerState<GameScreen> {
   bool hasThrownError = false;
   bool hasInitializedValue = false;
-
-  void _openSteamPage() {
-    final uri = Uri.parse(Env.steamGamePageBaseUrl + widget.game.steamAppID);
-    launcher.launchUrl(uri);
-  }
 
   void _showSnackbar(BuildContext context, bool isFavorite) {
     final adaptativeMessage = isFavorite ? 'added to' : 'removed from';
@@ -137,17 +130,7 @@ class _GameScreenState extends ConsumerState<GameScreen> {
                             fontSize: 20.0,
                           ),
                         ),
-                        if (widget.game.steamAppID.isNotEmpty)
-                          ElevatedButton(
-                            style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all<Color>(
-                                Colors.grey[900]!,
-                              ),
-                            ),
-                            onPressed: _openSteamPage,
-                            child:
-                                Image.asset('assets/images/steam_button.png'),
-                          ),
+                        SteamButton(game: widget.game),
                       ],
                     ),
                   ),
