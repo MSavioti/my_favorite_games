@@ -25,11 +25,17 @@ class SteamButton extends StatelessWidget {
     return ElevatedButton(
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all<Color>(
-          Colors.grey[900]!,
+          Colors.black,
+        ),
+        shape: MaterialStateProperty.all<OutlinedBorder>(
+          const BeveledRectangleBorder(),
         ),
       ),
       onPressed: _openSteamPage,
-      child: Image.asset('assets/images/steam_button.png'),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 12.0),
+        child: Image.asset('assets/images/steam_button.png'),
+      ),
     );
   }
 }
