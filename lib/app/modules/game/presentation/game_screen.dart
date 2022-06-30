@@ -48,23 +48,13 @@ class _GameScreenState extends ConsumerState<GameScreen> {
             padding: const EdgeInsets.only(right: 16.0),
             child: Consumer(
               builder: (context, ref, child) {
-                final isFavoriteProvider =
+                final isFavoriteAsyncValue =
                     ref.watch(widget.presenter.isFavoriteProvider);
-                final favoriteButtonProvider =
-                    ref.watch(widget.presenter.favoriteButtonProvider);
 
-                isFavoriteProvider.maybeWhen(
+                isFavoriteAsyncValue.maybeWhen(
                   data: (data) {
                     if (!hasInitializedValue) {
                       hasInitializedValue = true;
-                      WidgetsBinding.instance.addPostFrameCallback(
-                        (_) {
-                          ref
-                              .read(widget
-                                  .presenter.favoriteButtonProvider.notifier)
-                              .update((_) => data);
-                        },
-                      );
                     }
                   },
                   error: (_, __) {
@@ -82,16 +72,14 @@ class _GameScreenState extends ConsumerState<GameScreen> {
                 }
 
                 return FavoriteButton(
-                  isFavorite: favoriteButtonProvider,
+                  isFavorite: isFavoriteAsyncValue.value ?? false,
                   onPressed: () async {
-                    ref
-                        .read(widget.presenter.favoriteButtonProvider.notifier)
-                        .update((state) => !state);
                     final isFavorite =
-                        ref.read(widget.presenter.favoriteButtonProvider);
-                    _showSnackbar(context, isFavorite);
+                        ref.read(widget.presenter.isFavoriteProvider).value;
+                    _showSnackbar(context, isFavorite ?? false);
 
                     await widget.presenter.toggleFavoriteUseCase(widget.game);
+                    ref.refresh(widget.presenter.isFavoriteProvider);
                   },
                 );
               },

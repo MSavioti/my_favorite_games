@@ -7,7 +7,6 @@ import 'package:my_favorite_games/app/shared/entities/game.dart';
 
 class GameRiverpodPresenter implements GamePresenter {
   final Game game;
-  final favoriteButtonProvider = StateProvider<bool>((ref) => false);
   late final FutureProvider<bool> isFavoriteProvider;
 
   final toggleFavoriteUseCase = serviceLocator.get<ToggleFavoriteUseCase>();
