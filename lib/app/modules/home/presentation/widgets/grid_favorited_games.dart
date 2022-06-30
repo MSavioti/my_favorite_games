@@ -4,10 +4,12 @@ import 'package:my_favorite_games/app/shared/entities/game.dart';
 
 class GridFavoriteGames extends StatelessWidget {
   final List<Game> games;
+  final Function() onRefresh;
 
   const GridFavoriteGames({
     Key? key,
     required this.games,
+    required this.onRefresh,
   }) : super(key: key);
 
   @override
@@ -23,10 +25,12 @@ class GridFavoriteGames extends StatelessWidget {
           for (int i = 0; i < games.length; i++)
             GameGridItem(
               game: games[i],
-              onTap: () => Navigator.of(context).pushNamed(
-                '/game',
-                arguments: games[i],
-              ),
+              onTap: () async => await Navigator.of(context)
+                  .pushNamed(
+                    '/game',
+                    arguments: games[i],
+                  )
+                  .then((_) => onRefresh()),
             ),
         ],
       ),

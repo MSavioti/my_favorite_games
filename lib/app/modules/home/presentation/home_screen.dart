@@ -38,7 +38,10 @@ class HomeScreen extends ConsumerWidget {
                       );
                     }
 
-                    return GridFavoriteGames(games: data);
+                    return GridFavoriteGames(
+                      games: data,
+                      onRefresh: () => ref.refresh(homeProvider.provider),
+                    );
                   },
                   error: (obj, error) {
                     return AlertWithIcon(message: obj.toString());
